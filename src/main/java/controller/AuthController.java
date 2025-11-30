@@ -1,37 +1,30 @@
 package com.clickfarma.clickfarma_backend.controller;
 
-import com.clickfarma.clickfarma_backend.model.User;
+import com.clickfarma.clickfarma_backend.dto.AuthResponse;
+import com.clickfarma.clickfarma_backend.dto.LoginRequest;
+import com.clickfarma.clickfarma_backend.dto.RegisterRequest;
 import com.clickfarma.clickfarma_backend.service.AuthService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
-
-class RegisterRequest {
-    public String name;
-    public String email;
-    public String password;
-}
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private AuthService authService;
+    private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<User> register(@RequestBody RegisterRequest request) {
-        try {
-            User registeredUser = authService.registerUser(request.name, request.email, request.password);
-            // Retorna o usuário criado com status 201 (Created)
-            return new ResponseEntity<>(registeredUser, HttpStatus.CREATED);
-        } catch (RuntimeException e) {
-            // Retorna um erro se o email já estiver cadastrado
-            return new ResponseEntity(e.getMessage(), HttpStatus.BAD_REQUEST);
-        }
+    public ResponseEntity<AuthResponse> register(@RequestBody RegisterRequest request) {
+        return ResponseEntity.ok(authService.register(request));
     }
 
-
+    @PostMapping("/login")
+    public ResponseEntity<AuthResponse> login(@RequestBody LoginRequest request) {
+        return ResponseEntity.ok(authService.login(request));
+    }
 }
