@@ -1,6 +1,6 @@
 # SpringBoot-ClickFarma - API REST
 
-echo "📋 Visão Geral
+"📋 Visão Geral
 Uma API REST completa para gestão de farmácias desenvolvida em Spring Boot com autenticação JWT e documentação Swagger.
 
 🚀 Tecnologias Utilizadas
