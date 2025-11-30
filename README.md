@@ -88,19 +88,6 @@ mvn test
 mvn test -Dtest=*UnitTest
 mvn test -Dtest=*IntegrationTest
 
-🏗 Estrutura do Projeto:
-src/
-├── main/
-│   ├── java/com/clickfarma/
-│   │   ├── controller/
-│   │   ├── service/
-│   │   ├── repository/
-│   │   ├── entity/
-│   │   ├── dto/
-│   │   ├── security/
-│   │   └── config/
-│   └── resources/
-└── test/
 
 🔧 Perfis:
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
@@ -116,6 +103,6 @@ mvn spring-boot:run -Dspring-boot.run.profiles=prod
 📝 Licença: MIT
 
 👨‍💻 Autor:
-Gustavo Menezes (GitHub: @gustavsonmenezes)
+Gustavson Menezes (GitHub: @gustavsonmenezes)
 Versão: 1.0.0
 Última atualização: Dez/2023"
